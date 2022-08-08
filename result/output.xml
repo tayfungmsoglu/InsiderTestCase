@@ -1,0 +1,974 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0.1 (Python 3.10.5 on win32)" generated="20220808 12:27:52.881" rpa="false" schemaversion="3">
+<suite id="s1" name="InsiderTestSuites" source="C:\Users\tayfun.gumusoglu\PycharmProjects\ınsıderTestCase\tests\InsiderTestSuites.robot">
+<test id="s1-t1" name="01.Filter Customer List" line="13">
+<kw name="Launch Browser" library="MainFunction" type="SETUP">
+<arg>${ınsıderUrl}</arg>
+<kw name="HeadlessChrome" library="MainFunction">
+<arg>${url}</arg>
+<kw name="Set Environment Variable" library="OperatingSystem">
+<arg>webdriver.chrome.driver</arg>
+<arg>C:\\Users\\tayfun.gumusoglu\\PycharmProjects\\ınsıderTestCase\\Variables/chromedriver.exe</arg>
+<doc>Sets an environment variable to a specified value.</doc>
+<msg timestamp="20220808 12:27:54.175" level="INFO">Environment variable 'webdriver.chrome.driver' set to value 'C:\Users\tayfun.gumusoglu\PycharmProjects\ınsıderTestCase\Variables/chromedriver.exe'.</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Set Chrome Options" library="MainFunction">
+<var>${chrome_options}</var>
+<kw name="Evaluate" library="BuiltIn">
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys, selenium.webdriver</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220808 12:27:54.175" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001CF1E3E20E0&gt;</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<for flavor="IN">
+<var>${option}</var>
+<value>@{chrome_arguments}</value>
+<iter>
+<var name="${option}">--disable-infobars</var>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>${option}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</iter>
+<iter>
+<var name="${option}">--disable-gpu</var>
+<kw name="Call Method" library="BuiltIn">
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>${option}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</iter>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</for>
+<msg timestamp="20220808 12:27:54.175" level="INFO">${chrome_options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000001CF1E3E20E0&gt;</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${ws}</var>
+<arg>window-size=1920,1200</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220808 12:27:54.175" level="INFO">${ws} = window-size=1920,1200</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${disableLogging}</var>
+<arg>--log-level=3</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220808 12:27:54.175" level="INFO">${disableLogging} = --log-level=3</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>${ws}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Call Method" library="BuiltIn">
+<arg>${chrome_options}</arg>
+<arg>add_argument</arg>
+<arg>${disableLogging}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:54.175"/>
+</kw>
+<kw name="Create Webdriver" library="Selenium2Library">
+<arg>Chrome</arg>
+<arg>${alias}</arg>
+<arg>chrome_options=${chrome_options}</arg>
+<doc>Creates an instance of Selenium WebDriver.</doc>
+<msg timestamp="20220808 12:27:54.175" level="INFO">Creating an instance of the Chrome WebDriver.</msg>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:27:57.210"/>
+</kw>
+<kw name="Go To" library="Selenium2Library">
+<arg>${URL}</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220808 12:27:57.210" level="INFO">Opening url 'https://useinsider.com/'</msg>
+<status status="PASS" starttime="20220808 12:27:57.210" endtime="20220808 12:28:02.410"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:04.141" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3796.png"&gt;&lt;img src="selenium-screenshot-3796.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:02.411" endtime="20220808 12:28:04.141"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:28:04.141"/>
+</kw>
+<kw name="Maximize Browser Window" library="Selenium2Library">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220808 12:28:04.141" endtime="20220808 12:28:04.275"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:28:04.275"/>
+</kw>
+<kw name="Home Page Check" library="HomePageFacilities">
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<var>${passed}</var>
+<arg>Wait For Element</arg>
+<arg>${loginBoxTitle}</arg>
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${loginBoxTitle}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:04.308" level="INFO">Current page contains element 'xpath://img[@src="https://useinsider.com/assets/img/logo-old.png"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:04.275" endtime="20220808 12:28:04.308"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:04.275" endtime="20220808 12:28:04.308"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:06.005" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3797.png"&gt;&lt;img src="selenium-screenshot-3797.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:04.308" endtime="20220808 12:28:06.005"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:04.275" endtime="20220808 12:28:06.005"/>
+</kw>
+<msg timestamp="20220808 12:28:06.005" level="INFO">${passed} = True</msg>
+<status status="PASS" starttime="20220808 12:28:04.275" endtime="20220808 12:28:06.005"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${passed}</arg>
+<arg>Log To Console</arg>
+<arg>Home Page Open</arg>
+<arg>ELSE</arg>
+<arg>FAIL</arg>
+<arg>Home Page Open!!!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Home Page Open</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:06.005"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:06.005"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${cookies}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:06.022" level="INFO">Current page contains element 'xpath://a[@id="wt-cli-accept-all-btn"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:06.022"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:06.022"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:07.579" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3798.png"&gt;&lt;img src="selenium-screenshot-3798.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:06.030" endtime="20220808 12:28:07.579"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:07.579"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:07.579" level="INFO">Clicking element 'xpath://a[@id="wt-cli-accept-all-btn"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:07.579" endtime="20220808 12:28:07.708"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:06.005" endtime="20220808 12:28:07.708"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:04.275" endtime="20220808 12:28:07.708"/>
+</kw>
+<kw name="Open Careers" library="MenuMoreCareersFacilities">
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:28:08.714" level="INFO">Slept 1 second</msg>
+<status status="PASS" starttime="20220808 12:28:07.708" endtime="20220808 12:28:08.714"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${moreMenu}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:08.732" level="INFO">Current page contains element 'xpath://span[contains(text(),'More')]'.</msg>
+<status status="PASS" starttime="20220808 12:28:08.716" endtime="20220808 12:28:08.732"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:08.716" endtime="20220808 12:28:08.732"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:10.241" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3799.png"&gt;&lt;img src="selenium-screenshot-3799.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:08.732" endtime="20220808 12:28:10.241"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:08.716" endtime="20220808 12:28:10.241"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:10.241" level="INFO">Clicking element 'xpath://span[contains(text(),'More')]'.</msg>
+<status status="PASS" starttime="20220808 12:28:10.241" endtime="20220808 12:28:10.345"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:08.714" endtime="20220808 12:28:10.345"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:28:12.350" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220808 12:28:10.345" endtime="20220808 12:28:12.350"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${careers}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:12.374" level="INFO">Current page contains element 'xpath://*[@id="navbarNavDropdown"]/ul[1]/li[6]/div/div[1]/div[3]/div/a/h5'.</msg>
+<status status="PASS" starttime="20220808 12:28:12.350" endtime="20220808 12:28:12.374"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:12.350" endtime="20220808 12:28:12.374"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:13.948" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3800.png"&gt;&lt;img src="selenium-screenshot-3800.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:12.374" endtime="20220808 12:28:13.948"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:12.350" endtime="20220808 12:28:13.948"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:13.948" level="INFO">Clicking element 'xpath://*[@id="navbarNavDropdown"]/ul[1]/li[6]/div/div[1]/div[3]/div/a/h5'.</msg>
+<status status="PASS" starttime="20220808 12:28:13.948" endtime="20220808 12:28:23.240"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:12.350" endtime="20220808 12:28:23.240"/>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<var>${currentUrl}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220808 12:28:23.257" level="INFO">${currentUrl} = https://useinsider.com/careers/</msg>
+<status status="PASS" starttime="20220808 12:28:23.240" endtime="20220808 12:28:23.257"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${currentURL}'=='${url}'</arg>
+<arg>log to console</arg>
+<arg>Url is correct</arg>
+<arg>ELSE</arg>
+<arg>FAIL</arg>
+<arg>Url isn't correct!!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Url is correct</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220808 12:28:23.257" endtime="20220808 12:28:23.257"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:23.257" endtime="20220808 12:28:23.257"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:07.708" endtime="20220808 12:28:23.257"/>
+</kw>
+<kw name="Open Quality Assurance and Selected Location" library="MenuMoreCareersFacilities">
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:28:25.270" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220808 12:28:23.257" endtime="20220808 12:28:25.270"/>
+</kw>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${seeAllTeams}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:25.291" level="INFO">Current page contains element 'xpath://a[text()='See all teams']'.</msg>
+<status status="PASS" starttime="20220808 12:28:25.270" endtime="20220808 12:28:25.291"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:25.270" endtime="20220808 12:28:25.291"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:26.884" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3801.png"&gt;&lt;img src="selenium-screenshot-3801.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:25.291" endtime="20220808 12:28:26.884"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:25.270" endtime="20220808 12:28:26.884"/>
+</kw>
+<kw name="Execute Javascript" library="Selenium2Library">
+<arg>document.querySelector("#career-find-our-calling &gt; div &gt; div &gt; a").click()</arg>
+<doc>Executes the given JavaScript code with possible arguments.</doc>
+<msg timestamp="20220808 12:28:26.884" level="INFO">Executing JavaScript:
+document.querySelector("#career-find-our-calling &gt; div &gt; div &gt; a").click()
+Without any arguments.</msg>
+<status status="PASS" starttime="20220808 12:28:26.884" endtime="20220808 12:28:27.068"/>
+</kw>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${qualityAssurance}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:28.772" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3802.png"&gt;&lt;img src="selenium-screenshot-3802.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220808 12:28:28.772" level="FAIL">Page should have contained element 'xpath://img[@src="https://useinsider.com/assets/media/2021/03/qa.png"]' but did not.</msg>
+<status status="FAIL" starttime="20220808 12:28:27.070" endtime="20220808 12:28:28.784"/>
+</kw>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:29.330" level="INFO">Current page contains element 'xpath://img[@src="https://useinsider.com/assets/media/2021/03/qa.png"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:29.300" endtime="20220808 12:28:29.330"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:27.069" endtime="20220808 12:28:29.330"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:30.927" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3803.png"&gt;&lt;img src="selenium-screenshot-3803.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:29.330" endtime="20220808 12:28:30.927"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:27.068" endtime="20220808 12:28:30.927"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Scroll Element Into View</arg>
+<arg>${qualityAssurance}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Scroll Element Into View" library="Selenium2Library">
+<arg>${qualityAssurance}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<msg timestamp="20220808 12:28:32.659" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3804.png"&gt;&lt;img src="selenium-screenshot-3804.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220808 12:28:32.659" level="FAIL">MoveTargetOutOfBoundsException: Message: move target out of bounds
+  (Session info: chrome=103.0.5060.134)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x01005FD3+2187219]
+	Ordinal0 [0x00F9E6D1+1763025]
+	Ordinal0 [0x00EB3D40+802112]
+	Ordinal0 [0x00F152CA+1200842]
+	Ordinal0 [0x00EFCB8C+1100684]
+	Ordinal0 [0x00F0CFC2+1167298]
+	Ordinal0 [0x00EFC9A6+1100198]
+	Ordinal0 [0x00ED6F80+946048]
+	Ordinal0 [0x00ED7E76+949878]
+	GetHandleVerifier [0x012A90C2+2721218]
+	GetHandleVerifier [0x0129AAF0+2662384]
+	GetHandleVerifier [0x0109137A+526458]
+	GetHandleVerifier [0x01090416+522518]
+	Ordinal0 [0x00FA4EAB+1789611]
+	Ordinal0 [0x00FA97A8+1808296]
+	Ordinal0 [0x00FA9895+1808533]
+	Ordinal0 [0x00FB26C1+1844929]
+	BaseThreadInitThunk [0x76706739+25]
+	RtlGetFullPathName_UEx [0x77BF8FEF+1215]
+	RtlGetFullPathName_UEx [0x77BF8FBD+1165]
+</msg>
+<status status="FAIL" starttime="20220808 12:28:30.927" endtime="20220808 12:28:32.676"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:30.927" endtime="20220808 12:28:32.677"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${qualityAssurance}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:32.691" level="INFO">Current page contains element 'xpath://img[@src="https://useinsider.com/assets/media/2021/03/qa.png"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:32.677" endtime="20220808 12:28:32.691"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:32.677" endtime="20220808 12:28:32.692"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:34.345" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3805.png"&gt;&lt;img src="selenium-screenshot-3805.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:32.692" endtime="20220808 12:28:34.345"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:32.677" endtime="20220808 12:28:34.345"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:34.345" level="INFO">Clicking element 'xpath://img[@src="https://useinsider.com/assets/media/2021/03/qa.png"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:34.345" endtime="20220808 12:28:36.740"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:32.677" endtime="20220808 12:28:36.740"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:28:38.748" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220808 12:28:36.740" endtime="20220808 12:28:38.748"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${seeAllQAJobs}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:38.756" level="INFO">Current page contains element 'xpath://a[text()='See all QA jobs']'.</msg>
+<status status="PASS" starttime="20220808 12:28:38.748" endtime="20220808 12:28:38.756"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:38.748" endtime="20220808 12:28:38.771"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:40.572" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3806.png"&gt;&lt;img src="selenium-screenshot-3806.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:38.772" endtime="20220808 12:28:40.572"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:38.748" endtime="20220808 12:28:40.572"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:40.572" level="INFO">Clicking element 'xpath://a[text()='See all QA jobs']'.</msg>
+<status status="PASS" starttime="20220808 12:28:40.572" endtime="20220808 12:28:43.063"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:38.748" endtime="20220808 12:28:43.063"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:23.257" endtime="20220808 12:28:43.063"/>
+</kw>
+<kw name="See All QA Jobs Filter" library="MenuMoreCareersFacilities">
+<kw name="Sleep" library="BuiltIn">
+<arg>2s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:28:45.073" level="INFO">Slept 2 seconds</msg>
+<status status="PASS" starttime="20220808 12:28:43.065" endtime="20220808 12:28:45.073"/>
+</kw>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${locationFilter}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:45.106" level="INFO">Current page contains element 'xpath://span[@title="All"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:45.073" endtime="20220808 12:28:45.106"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:45.073" endtime="20220808 12:28:45.106"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:46.800" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3807.png"&gt;&lt;img src="selenium-screenshot-3807.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:45.106" endtime="20220808 12:28:46.800"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:45.073" endtime="20220808 12:28:46.800"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${locationFilter}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:46.812" level="INFO">Current page contains element 'xpath://span[@title="All"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:46.802" endtime="20220808 12:28:46.812"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:46.802" endtime="20220808 12:28:46.812"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:48.466" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3808.png"&gt;&lt;img src="selenium-screenshot-3808.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:46.812" endtime="20220808 12:28:48.466"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:46.800" endtime="20220808 12:28:48.466"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:48.466" level="INFO">Clicking element 'xpath://span[@title="All"]'.</msg>
+<status status="PASS" starttime="20220808 12:28:48.466" endtime="20220808 12:28:48.568"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:46.800" endtime="20220808 12:28:48.568"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${locationIstanbul}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:48.589" level="INFO">Current page contains element 'xpath://ul[@role="listbox"]//li[text()='Istanbul, Turkey']'.</msg>
+<status status="PASS" starttime="20220808 12:28:48.572" endtime="20220808 12:28:48.589"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:48.572" endtime="20220808 12:28:48.589"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:50.283" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3809.png"&gt;&lt;img src="selenium-screenshot-3809.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:48.589" endtime="20220808 12:28:50.283"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:48.571" endtime="20220808 12:28:50.283"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:50.283" level="INFO">Clicking element 'xpath://ul[@role="listbox"]//li[text()='Istanbul, Turkey']'.</msg>
+<status status="PASS" starttime="20220808 12:28:50.283" endtime="20220808 12:28:50.380"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:48.568" endtime="20220808 12:28:50.380"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${departmentFilter}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:50.397" level="INFO">Current page contains element 'id:select2-filter-by-department-container'.</msg>
+<status status="PASS" starttime="20220808 12:28:50.380" endtime="20220808 12:28:50.397"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:50.380" endtime="20220808 12:28:50.397"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:52.064" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3810.png"&gt;&lt;img src="selenium-screenshot-3810.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:50.397" endtime="20220808 12:28:52.064"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:50.380" endtime="20220808 12:28:52.064"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:52.064" level="INFO">Clicking element 'id:select2-filter-by-department-container'.</msg>
+<status status="PASS" starttime="20220808 12:28:52.064" endtime="20220808 12:28:52.117"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:50.380" endtime="20220808 12:28:52.117"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${QADepartment}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:52.133" level="INFO">Current page contains element 'xpath://ul[@role="listbox"]//li[text()='Quality Assurance']'.</msg>
+<status status="PASS" starttime="20220808 12:28:52.122" endtime="20220808 12:28:52.133"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:52.120" endtime="20220808 12:28:52.133"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:53.790" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3811.png"&gt;&lt;img src="selenium-screenshot-3811.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:52.133" endtime="20220808 12:28:53.790"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:52.120" endtime="20220808 12:28:53.790"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:28:53.790" level="INFO">Clicking element 'xpath://ul[@role="listbox"]//li[text()='Quality Assurance']'.</msg>
+<status status="PASS" starttime="20220808 12:28:53.790" endtime="20220808 12:28:53.863"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:52.120" endtime="20220808 12:28:53.863"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:43.064" endtime="20220808 12:28:53.863"/>
+</kw>
+<kw name="All Jobs Position contains Quality Assurance Check and Apply Now Click" library="MenuMoreCareersFacilities">
+<kw name="Check Element Text" library="MainFunction">
+<arg>${qaPositionNameOne}</arg>
+<arg>Quality Assurance</arg>
+<arg>First Quality assurance check</arg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:55.489" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3812.png"&gt;&lt;img src="selenium-screenshot-3812.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:53.863" endtime="20220808 12:28:55.489"/>
+</kw>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:28:55.505" level="INFO">Current page contains element 'xpath://*[@id="jobs-list"]/div[1]/div/span[text()='Quality Assurance']'.</msg>
+<status status="PASS" starttime="20220808 12:28:55.489" endtime="20220808 12:28:55.505"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:55.489" endtime="20220808 12:28:55.505"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:57.116" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3813.png"&gt;&lt;img src="selenium-screenshot-3813.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:55.505" endtime="20220808 12:28:57.116"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:55.489" endtime="20220808 12:28:57.116"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${expectedText}</var>
+<arg>${expectedText}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220808 12:28:57.116" level="INFO">${expectedText} = Quality Assurance</msg>
+<status status="PASS" starttime="20220808 12:28:57.116" endtime="20220808 12:28:57.116"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${value}</var>
+<arg>Element Text Should Be</arg>
+<arg>${element}</arg>
+<arg>${expectedText}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>${expectedText}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220808 12:28:57.116" level="INFO">Verifying element 'xpath://*[@id="jobs-list"]/div[1]/div/span[text()='Quality Assurance']' contains exact text 'Quality Assurance'.</msg>
+<status status="PASS" starttime="20220808 12:28:57.116" endtime="20220808 12:28:57.140"/>
+</kw>
+<msg timestamp="20220808 12:28:57.140" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220808 12:28:57.140" level="INFO">${value} = None</msg>
+<status status="PASS" starttime="20220808 12:28:57.116" endtime="20220808 12:28:57.140"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}'=='PASS'</arg>
+<arg>log to console</arg>
+<arg>\n${checkMessage} Success</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>\nERROR-${checkMessage}-ERROR</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\n${checkMessage} Success</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220808 12:28:57.140" endtime="20220808 12:28:57.140"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:57.140" endtime="20220808 12:28:57.140"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:28:58.816" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3814.png"&gt;&lt;img src="selenium-screenshot-3814.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:57.153" endtime="20220808 12:28:58.816"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:53.863" endtime="20220808 12:28:58.816"/>
+</kw>
+<kw name="Check Element Text" library="MainFunction">
+<arg>${qaPositionNameTwo}</arg>
+<arg>Quality Assurance</arg>
+<arg>Second Quality assurance check</arg>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:29:00.454" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3815.png"&gt;&lt;img src="selenium-screenshot-3815.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:28:58.816" endtime="20220808 12:29:00.456"/>
+</kw>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:29:00.472" level="INFO">Current page contains element 'xpath://*[@id="jobs-list"]/div[2]/div/span[text()='Quality Assurance']'.</msg>
+<status status="PASS" starttime="20220808 12:29:00.456" endtime="20220808 12:29:00.472"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:00.456" endtime="20220808 12:29:00.472"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:29:02.187" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3816.png"&gt;&lt;img src="selenium-screenshot-3816.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:29:00.472" endtime="20220808 12:29:02.187"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:00.456" endtime="20220808 12:29:02.187"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${expectedText}</var>
+<arg>${expectedText}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20220808 12:29:02.187" level="INFO">${expectedText} = Quality Assurance</msg>
+<status status="PASS" starttime="20220808 12:29:02.187" endtime="20220808 12:29:02.187"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<var>${value}</var>
+<arg>Element Text Should Be</arg>
+<arg>${element}</arg>
+<arg>${expectedText}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Element Text Should Be" library="Selenium2Library">
+<arg>${element}</arg>
+<arg>${expectedText}</arg>
+<doc>Verifies that element ``locator`` contains exact the text ``expected``.</doc>
+<msg timestamp="20220808 12:29:02.187" level="INFO">Verifying element 'xpath://*[@id="jobs-list"]/div[2]/div/span[text()='Quality Assurance']' contains exact text 'Quality Assurance'.</msg>
+<status status="PASS" starttime="20220808 12:29:02.187" endtime="20220808 12:29:02.235"/>
+</kw>
+<msg timestamp="20220808 12:29:02.235" level="INFO">${status} = PASS</msg>
+<msg timestamp="20220808 12:29:02.235" level="INFO">${value} = None</msg>
+<status status="PASS" starttime="20220808 12:29:02.187" endtime="20220808 12:29:02.235"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}'=='PASS'</arg>
+<arg>log to console</arg>
+<arg>\n${checkMessage} Success</arg>
+<arg>ELSE</arg>
+<arg>Fail</arg>
+<arg>\nERROR-${checkMessage}-ERROR</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>\n${checkMessage} Success</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220808 12:29:02.235" endtime="20220808 12:29:02.235"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:02.235" endtime="20220808 12:29:02.235"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:29:03.887" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3817.png"&gt;&lt;img src="selenium-screenshot-3817.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:29:02.235" endtime="20220808 12:29:03.887"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:58.816" endtime="20220808 12:29:03.887"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Scroll Element Into View</arg>
+<arg>${DirectionButton}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Scroll Element Into View" library="Selenium2Library">
+<arg>${DirectionButton}</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<msg timestamp="20220808 12:29:05.514" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3818.png"&gt;&lt;img src="selenium-screenshot-3818.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220808 12:29:05.514" level="FAIL">MoveTargetOutOfBoundsException: Message: move target out of bounds
+  (Session info: chrome=103.0.5060.134)
+Stacktrace:
+Backtrace:
+	Ordinal0 [0x01005FD3+2187219]
+	Ordinal0 [0x00F9E6D1+1763025]
+	Ordinal0 [0x00EB3D40+802112]
+	Ordinal0 [0x00F152CA+1200842]
+	Ordinal0 [0x00EFCB8C+1100684]
+	Ordinal0 [0x00F0CFC2+1167298]
+	Ordinal0 [0x00EFC9A6+1100198]
+	Ordinal0 [0x00ED6F80+946048]
+	Ordinal0 [0x00ED7E76+949878]
+	GetHandleVerifier [0x012A90C2+2721218]
+	GetHandleVerifier [0x0129AAF0+2662384]
+	GetHandleVerifier [0x0109137A+526458]
+	GetHandleVerifier [0x01090416+522518]
+	Ordinal0 [0x00FA4EAB+1789611]
+	Ordinal0 [0x00FA97A8+1808296]
+	Ordinal0 [0x00FA9895+1808533]
+	Ordinal0 [0x00FB26C1+1844929]
+	BaseThreadInitThunk [0x76706739+25]
+	RtlGetFullPathName_UEx [0x77BF8FEF+1215]
+	RtlGetFullPathName_UEx [0x77BF8FBD+1165]
+</msg>
+<status status="FAIL" starttime="20220808 12:29:03.887" endtime="20220808 12:29:05.514"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:03.887" endtime="20220808 12:29:05.514"/>
+</kw>
+<kw name="Wait And Click Element" library="MainFunction">
+<arg>${applyNow}</arg>
+<kw name="Wait For Element" library="MainFunction">
+<arg>${element}</arg>
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<kw name="Wait Until Keyword Succeeds" library="BuiltIn">
+<arg>${timeout}</arg>
+<arg>${interval}</arg>
+<arg>Page Should Contain Element</arg>
+<arg>${element}</arg>
+<doc>Runs the specified keyword and retries if it fails.</doc>
+<kw name="Page Should Contain Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Verifies that element ``locator`` is found on the current page.</doc>
+<msg timestamp="20220808 12:29:05.531" level="INFO">Current page contains element 'xpath://div[@id='jobs-list']//div[2]//div[1]//a[1]'.</msg>
+<status status="PASS" starttime="20220808 12:29:05.514" endtime="20220808 12:29:05.531"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:05.514" endtime="20220808 12:29:05.531"/>
+</kw>
+<kw name="Capture Page Screenshot" library="Selenium2Library">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220808 12:29:07.120" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-3819.png"&gt;&lt;img src="selenium-screenshot-3819.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220808 12:29:05.531" endtime="20220808 12:29:07.120"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:05.514" endtime="20220808 12:29:07.120"/>
+</kw>
+<kw name="Click Element" library="Selenium2Library">
+<arg>${element}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220808 12:29:07.120" level="INFO">Clicking element 'xpath://div[@id='jobs-list']//div[2]//div[1]//a[1]'.</msg>
+<status status="PASS" starttime="20220808 12:29:07.120" endtime="20220808 12:29:07.224"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:05.514" endtime="20220808 12:29:07.224"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>5s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220808 12:29:12.227" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220808 12:29:07.225" endtime="20220808 12:29:12.227"/>
+</kw>
+<status status="PASS" starttime="20220808 12:28:53.863" endtime="20220808 12:29:12.227"/>
+</kw>
+<kw name="Lever Application Form Page Check" library="MenuMoreCareersFacilities">
+<kw name="Get Window Handles" library="Selenium2Library">
+<var>${handles}</var>
+<doc>Returns all child window handles of the selected browser as a list.</doc>
+<msg timestamp="20220808 12:29:12.235" level="INFO">${handles} = ['CDwindow-41FEBFD731C606586901A6889DC474E4', 'CDwindow-9CF6E29C53372F28069B2ADF7DE2F0D4']</msg>
+<status status="PASS" starttime="20220808 12:29:12.227" endtime="20220808 12:29:12.235"/>
+</kw>
+<kw name="Switch Window" library="Selenium2Library">
+<arg>${handles}[1]</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220808 12:29:12.235" endtime="20220808 12:29:12.372"/>
+</kw>
+<kw name="Get Location" library="Selenium2Library">
+<var>${currentUrl}</var>
+<doc>Returns the current browser window URL.</doc>
+<msg timestamp="20220808 12:29:12.415" level="INFO">${currentUrl} = https://jobs.lever.co/useinsider/0ba4065b-955a-4661-ad4a-f32479f63757</msg>
+<status status="PASS" starttime="20220808 12:29:12.372" endtime="20220808 12:29:12.415"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${currentURL}'=='${LeverApplicationUrl}'</arg>
+<arg>log to console</arg>
+<arg>Lever Application form page Url is correct</arg>
+<arg>ELSE</arg>
+<arg>FAIL</arg>
+<arg>Lever Application form page Url Url isn't correct!!</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Log To Console" library="BuiltIn">
+<arg>Lever Application form page Url is correct</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:12.415"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:12.415"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:12.227" endtime="20220808 12:29:12.415"/>
+</kw>
+<kw name="When Test Fail Take Screenshot" library="MainFunction" type="TEARDOWN">
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Capture Page Screenshot</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:12.415"/>
+</kw>
+<kw name="Run Keyword If Test Failed" library="BuiltIn">
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:12.415"/>
+</kw>
+<kw name="Run Keyword If Test Passed" library="BuiltIn">
+<arg>Close Browser</arg>
+<doc>Runs the given keyword with the given arguments, if the test passed.</doc>
+<kw name="Close Browser" library="Selenium2Library">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:16.338"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:16.338"/>
+</kw>
+<status status="PASS" starttime="20220808 12:29:12.415" endtime="20220808 12:29:16.338"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:54.175" endtime="20220808 12:29:16.338"/>
+</test>
+<kw name="Close All Browsers" library="Selenium2Library" type="TEARDOWN">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20220808 12:29:16.338" endtime="20220808 12:29:16.338"/>
+</kw>
+<status status="PASS" starttime="20220808 12:27:52.897" endtime="20220808 12:29:16.338"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="0" skip="0" id="s1" name="InsiderTestSuites">InsiderTestSuites</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
